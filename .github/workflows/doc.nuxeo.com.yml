@@ -1,4 +1,4 @@
-name: Build and Deploy Doc.Nuxeo.com
+name: Build and Deploy
 
 on:
   pull_request:
