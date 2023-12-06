@@ -9,22 +9,22 @@ on:
 jobs:
   set-environment:
     runs-on: ubuntu-latest
-    steps:
-      - name: Set Doc Environment based on branch name
-        run: |
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            TARGET_BRANCH=${{ github.event.pull_request.head.ref }}
-            
-            if [[ "$TARGET_BRANCH" == "main" ]]; then
-              echo "Environment: production"
-              echo "DOC_ENV=production" >> $GITHUB_ENV
-            elif [[ "$TARGET_BRANCH" == "development" ]]; then
-              echo "Environment: development"
-              echo "DOC_ENV=development" >> $GITHUB_ENV
-            else
-              echo "Environment: Wrong Environment"
-              echo "DOC_ENV=Wrong Environment" >> $GITHUB_ENV
+        steps:
+          - name: Set Doc Environment based on branch name
+            run: |
+              if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+                TARGET_BRANCH=${{ github.event.pull_request.head.ref }}
+                
+                if [[ "$TARGET_BRANCH" == "main" ]]; then
+                  echo "Environment: production"
+                  echo "DOC_ENV=production" >> $GITHUB_ENV
+                elif [[ "$TARGET_BRANCH" == "development" ]]; then
+                  echo "Environment: development"
+                  echo "DOC_ENV=development" >> $GITHUB_ENV
+                else
+                  echo "Environment: Wrong Environment"
+                  echo "DOC_ENV=Wrong Environment" >> $GITHUB_ENV
 
-       - name: Display Environment Variable
-         run: |
-           echo "DOC_ENV: $DOC_ENV"
+           - name: Display Environment Variable
+             run: |
+               echo "DOC_ENV: $DOC_ENV"
