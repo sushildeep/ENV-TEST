@@ -9,7 +9,7 @@ on:
 jobs:
   set-environment:
     runs-on: ubuntu-latest
-        steps:
+    steps:
           - name: Set Doc Environment based on branch name
             run: |
               if [[ "${{ github.event_name }}" == "pull_request" ]]; then
@@ -25,6 +25,6 @@ jobs:
                   echo "Environment: Wrong Environment"
                   echo "DOC_ENV=Wrong Environment" >> $GITHUB_ENV
 
-           - name: Display Environment Variable
-             run: |
+          - name: Display Environment Variable
+            run: |
                echo "DOC_ENV: $DOC_ENV"
